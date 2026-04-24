@@ -16,7 +16,7 @@ export default function Privacy() {
 
       <main className="privacy-main">
         <div className="wrap">
-      <article class="card">
+      <article className="card">
           <h1>Privacy Policy</h1>
           <p>Effective date: April 24, 2026</p>
 
