@@ -1,17 +1,30 @@
 'use client';
 
 import { useEffect } from 'react';
+import Image from 'next/image';
+import logo from '@/public/logo.png';
+
+const PLAY_STORE_URL =
+  'https://play.google.com/store/apps/details?id=com.honara7ty.app';
+const APP_STORE_URL = 'https://apps.apple.com/eg/app/id6799511461';
+
+function isIosDevice(ua: string) {
+  return (
+    /iPad|iPhone|iPod/.test(ua) ||
+    (/Macintosh/.test(ua) && 'ontouchend' in document)
+  );
+}
 
 export default function DevotionGroupInviteClient({ code }: { code: string }) {
   const cleanCode = code.replace(/\s+/g, '');
   const appLink = `honara7ty://devotion-group-invite?code=${encodeURIComponent(cleanCode)}`;
-  const playStoreUrl =
-    'https://play.google.com/store/apps/details?id=com.honara7ty.app';
 
   useEffect(() => {
     if (!cleanCode) return;
 
-    const isAndroid = /Android/i.test(window.navigator.userAgent);
+    const ua = window.navigator.userAgent;
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = isIosDevice(ua);
     let didLeavePage = false;
 
     const handleVisibilityChange = () => {
@@ -26,7 +39,9 @@ export default function DevotionGroupInviteClient({ code }: { code: string }) {
 
     const fallbackTimer = window.setTimeout(() => {
       if (!didLeavePage && isAndroid) {
-        window.location.href = playStoreUrl;
+        window.location.href = PLAY_STORE_URL;
+      } else if (!didLeavePage && isIOS) {
+        window.location.href = APP_STORE_URL;
       }
     }, 1600);
 
@@ -34,133 +49,49 @@ export default function DevotionGroupInviteClient({ code }: { code: string }) {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.clearTimeout(fallbackTimer);
     };
-  }, [appLink, cleanCode, playStoreUrl]);
+  }, [appLink, cleanCode]);
 
   return (
-    <main
-      dir="rtl"
-      style={{
-        minHeight: '100vh',
-        margin: 0,
-        padding: 24,
-        display: 'grid',
-        placeItems: 'center',
-        background:
-          'radial-gradient(circle at top, #FFF8E5 0, #F2F4F8 38%, #E9EDF5 100%)',
-        fontFamily:
-          'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-        color: '#0A1124',
-      }}
-    >
-      <section
-        style={{
-          width: '100%',
-          maxWidth: 430,
-          background: '#FFFFFF',
-          border: '1px solid rgba(10,17,36,0.08)',
-          borderRadius: 24,
-          padding: 24,
-          boxShadow: '0 18px 45px rgba(10,17,36,0.12)',
-          textAlign: 'center',
-        }}
-      >
-        <div
-          style={{
-            width: 74,
-            height: 74,
-            borderRadius: 24,
-            margin: '0 auto 16px',
-            display: 'grid',
-            placeItems: 'center',
-            background: '#FFF4D6',
-            color: '#C9A84C',
-            fontSize: 34,
-            fontWeight: 900,
-          }}
-        >
-          ✚
-        </div>
+    <main className="invite">
+      <section className="invite-card anim-up">
+        <Image
+          className="invite-logo"
+          src={logo}
+          alt="شعار هنا راحتى"
+          width={76}
+          height={76}
+          priority
+        />
 
-        <h1 style={{ margin: '0 0 8px', fontSize: 24, lineHeight: 1.35 }}>
-          دعوة لمجموعة الخلوة
-        </h1>
+        <h1>دعوة لمجموعة الخلوة</h1>
 
-        <p
-          style={{
-            margin: '0 auto 18px',
-            maxWidth: 330,
-            color: '#5F6874',
-            fontSize: 15,
-            lineHeight: 1.7,
-          }}
-        >
-          اتدعيت تدخل مجموعة خلوة على هنار حتي. افتح التطبيق عشان تشوف الدعوة
-          وتقرر تنضم أو لا.
+        <p className="invite-sub">
+          اتدعيت تنضم لمجموعة خلوة على «هنا راحتى». افتح التطبيق لتشوف الدعوة
+          وتقرر الانضمام أو لا.
         </p>
 
-        {cleanCode ? (
-          <div
-            style={{
-              marginBottom: 16,
-              padding: '10px 14px',
-              borderRadius: 999,
-              background: '#F6F8FC',
-              border: '1px solid rgba(10,17,36,0.08)',
-              fontWeight: 900,
-              letterSpacing: 1,
-            }}
-          >
-            {cleanCode}
-          </div>
-        ) : null}
+        {cleanCode ? <div className="invite-code">{cleanCode}</div> : null}
 
-        <a
-          href={appLink}
-          style={{
-            minHeight: 48,
-            borderRadius: 14,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: '#0A1124',
-            color: '#FFFFFF',
-            textDecoration: 'none',
-            fontSize: 15,
-            fontWeight: 900,
-          }}
-        >
+        <a className="btn btn-primary invite-btn" href={appLink}>
           فتح التطبيق
         </a>
 
-        <a
-          href={playStoreUrl}
-          style={{
-            marginTop: 10,
-            minHeight: 44,
-            borderRadius: 14,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: '#EEF2F8',
-            color: '#0A1124',
-            textDecoration: 'none',
-            fontSize: 14,
-            fontWeight: 900,
-          }}
-        >
-          تحميل التطبيق من Google Play
-        </a>
+        {cleanCode ? (
+          <p className="invite-status">جارٍ فتح التطبيق تلقائيًا…</p>
+        ) : null}
 
-        <p
-          style={{
-            margin: '14px 0 0',
-            color: '#7A818B',
-            fontSize: 13,
-            lineHeight: 1.6,
-          }}
-        >
-          لو التطبيق متسطب، هيفتح تلقائيًا خلال لحظات. لو مش متسطب على
-          أندرويد، هتتحول لصفحة Google Play.
+        <div className="invite-stores">
+          <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+            Google Play
+          </a>
+          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+            App Store
+          </a>
+        </div>
+
+        <p className="invite-hint">
+          لو التطبيق مش متسطّب على جهازك، هيتم تحويلك تلقائيًا للمتجر المناسب
+          (Google Play أو App Store) خلال لحظات.
         </p>
       </section>
     </main>

@@ -1,8 +1,8 @@
 import Link from "next/link"
 
 export const metadata = {
-  title: "Honara7ty - Privacy Policy",
-  description: "Privacy policy for the Honara7ty mobile application.",
+  title: "Honara7ty - سياسة الخصوصية",
+  description: "سياسة الخصوصية الخاصة بتطبيق Honara7ty للجوال.",
 }
 
 export default function Privacy() {
@@ -10,184 +10,161 @@ export default function Privacy() {
     <>
       <header className="privacy-header">
         <div className="wrap">
-          <Link href="/">Honara7ty</Link>
+          <Link href="/">← العودة إلى الصفحة الرئيسية</Link>
         </div>
       </header>
 
       <main className="privacy-main">
         <div className="wrap">
-      <article className="card">
-          <h1>Privacy Policy</h1>
-          <p>Effective date: April 24, 2026</p>
+          <article className="card">
+            <h1>سياسة الخصوصية</h1>
+            <p>تاريخ السريان: ٢٤ أبريل ٢٠٢٦</p>
 
-          <p>
-            This Privacy Policy applies to the Honara7ty mobile application
-            (&quot;Application&quot;), provided by fady khayrat (&quot;Service
-            Provider&quot;) as a free service. The Application is provided for
-            use as is.
-          </p>
+            <p>
+              تنطبق سياسة الخصوصية هذه على تطبيق Honara7ty للجوال
+              (&quot;التطبيق&quot;)، المقدّم من فادي خيرات (&quot;مقدّم
+              الخدمة&quot;) كخدمة مجانية. يتم توفير التطبيق للاستخدام كما هو.
+            </p>
 
-          <h2>Information We Collect</h2>
-          <p>
-            When you use the Application, we may collect and process the
-            following categories of information:
-          </p>
-          <ul>
-            <li>
-              Account information, such as your name, email address, and profile
-              details
-            </li>
-            <li>Authentication data used to sign you in securely</li>
-            <li>
-              Devotional data, such as reminder settings, reading plans, reading
-              activity, devotional tracking data, prayer notes, and reflections
-            </li>
-            <li>
-              Device and app information, such as device type, operating system,
-              app version, country/region, and general diagnostic information
-            </li>
-            <li>
-              Usage information, such as screens viewed, features used,
-              interactions within the app, and time spent using the Application
-            </li>
-            <li>
-              Crash, error, and performance data to help diagnose issues and
-              improve reliability
-            </li>
-          </ul>
+            <h2>المعلومات التي نجمعها</h2>
+            <p>عند استخدامك للتطبيق، قد نجمع ونعالج الفئات التالية من المعلومات:</p>
+            <ul>
+              <li>
+                معلومات الحساب، مثل الاسم والبريد الإلكتروني وتفاصيل الملف
+                الشخصي
+              </li>
+              <li>بيانات المصادقة المستخدمة لتسجيل دخولك بشكل آمن</li>
+              <li>
+                البيانات الروحية، مثل إعدادات التذكيرات، وخطط القراءة، ونشاط
+                القراءة، وبيانات المتابعة الروحية، وملاحظات الصلاة والتأملات
+              </li>
+              <li>
+                معلومات الجهاز والتطبيق، مثل نوع الجهاز ونظام التشغيل وإصدار
+                التطبيق والبلد/المنطقة ومعلومات تشخيصية عامة
+              </li>
+              <li>
+                بيانات الاستخدام، مثل الشاشات المعروضة والميزات المستخدمة
+                والتفاعلات داخل التطبيق ومدة استخدامه
+              </li>
+              <li>
+                بيانات الأعطال والأخطاء والأداء للمساعدة في تشخيص المشكلات وتحسين
+                الموثوقية
+              </li>
+            </ul>
 
-          <p>
-            The Application does not collect precise location information from
-            your mobile device for its core functionality.
-          </p>
+            <p>
+              لا يجمع التطبيق معلومات الموقع الدقيقة من جهازك المحمول لأغراض
+              وظائفه الأساسية.
+            </p>
 
-          <h2>How We Use Information</h2>
-          <p>
-            We use information collected through the Application to:
-          </p>
-          <ul>
-            <li>Create and manage your account</li>
-            <li>Authenticate you securely</li>
-            <li>Save your devotional preferences, reminders, and reading plans</li>
-            <li>Store prayer notes, reflections, and devotional activity</li>
-            <li>Send reminders and notifications when enabled by you</li>
-            <li>
-              Monitor app performance, diagnose crashes and errors, and improve
-              reliability
-            </li>
-            <li>
-              Understand how users interact with the Application and improve the
-              user experience
-            </li>
-            <li>Maintain security and prevent abuse</li>
-          </ul>
+            <h2>كيف نستخدم المعلومات</h2>
+            <p>نستخدم المعلومات المجمّعة من خلال التطبيق من أجل:</p>
+            <ul>
+              <li>إنشاء حسابك وإدارته</li>
+              <li>التحقق من هويتك وتسجيل دخولك بشكل آمن</li>
+              <li>حفظ تفضيلاتك الروحية وتذكيراتك وخطط قراءتك</li>
+              <li>تخزين ملاحظات الصلاة والتأملات والنشاط الروحي</li>
+              <li>إرسال التذكيرات والإشعارات عند تمكينك لها</li>
+              <li>مراقبة أداء التطبيق وتشخيص الأعطال والأخطاء وتحسين الموثوقية</li>
+              <li>فهم طريقة تفاعل المستخدمين مع التطبيق وتحسين تجربة الاستخدام</li>
+              <li>الحفاظ على الأمان ومنع إساءة الاستخدام</li>
+            </ul>
 
-          <h2>Analytics, Diagnostics, and Session Replay</h2>
-          <p>
-            The Application uses analytics, diagnostics, and session replay
-            tools to understand app reliability and user experience. These tools
-            may collect information such as:
-          </p>
-          <ul>
-            <li>App usage and interaction data</li>
-            <li>Screen navigation and feature usage</li>
-            <li>Device and app diagnostics</li>
-            <li>Crash logs, error details, and performance data</li>
-            <li>
-              Session-related data to help replay and understand app behavior
-            </li>
-          </ul>
-          <p>
-            The Application currently uses services such as Sentry and
-            Microsoft Clarity for error monitoring, diagnostics, analytics, and
-            session replay. These services may receive device, usage, and
-            diagnostic data in order to provide their services.
-          </p>
-          <p>
-            Where supported by these services, sensitive content is intended to
-            be masked or sanitized. However, no system can guarantee perfect
-            masking in every situation, so users should avoid entering
-            unnecessary highly sensitive personal information into free-text
-            fields.
-          </p>
+            <h2>التحليلات والتشخيص وإعادة جلسات الاستخدام</h2>
+            <p>
+              يستخدم التطبيق أدوات التحليلات والتشخيص وإعادة جلسات الاستخدام
+              لفهم موثوقية التطبيق وتجربة المستخدم. وقد تجمع هذه الأدوات معلومات
+              مثل:
+            </p>
+            <ul>
+              <li>بيانات الاستخدام والتفاعل داخل التطبيق</li>
+              <li>التنقل بين الشاشات واستخدام الميزات</li>
+              <li>تشخيصات الجهاز والتطبيق</li>
+              <li>سجلات الأعطال وتفاصيل الأخطاء وبيانات الأداء</li>
+              <li>بيانات متعلقة بالجلسة للمساعدة في إعادة عرض وفهم سلوك التطبيق</li>
+            </ul>
+            <p>
+              يستخدم التطبيق حاليًا خدمات مثل Sentry و Microsoft Clarity لمراقبة
+              الأخطاء والتشخيص والتحليلات وإعادة جلسات الاستخدام. وقد تتلقى هذه
+              الخدمات بيانات الجهاز والاستخدام والتشخيص لتقديم خدماتها.
+            </p>
+            <p>
+              حيثما تدعم هذه الخدمات ذلك، يتم إخفاء أو تنقية المحتوى الحساس. ومع
+              ذلك، لا يمكن لأي نظام ضمان الإخفاء الكامل في كل الحالات، لذا ننصح
+              المستخدمين بتجنّب إدخال معلومات شخصية شديدة الحساسية في حقول النص
+              الحر.
+            </p>
 
-          <h2>Third-Party Services</h2>
-          <p>The Application may use third-party services, including:</p>
-          <ul>
-            <li>Google Play Services</li>
-            <li>Supabase</li>
-            <li>Google Sign-In</li>
-            <li>Sentry</li>
-            <li>Microsoft Clarity</li>
-          </ul>
-          <p>
-            These third parties may process information in accordance with their
-            own privacy policies.
-          </p>
+            <h2>خدمات الطرف الثالث</h2>
+            <p>قد يستخدم التطبيق خدمات طرف ثالث، بما في ذلك:</p>
+            <ul>
+              <li>Google Play Services</li>
+              <li>Supabase</li>
+              <li>Google Sign-In</li>
+              <li>Sentry</li>
+              <li>Microsoft Clarity</li>
+            </ul>
+            <p>
+              قد تعالج هذه الجهات الخارجية المعلومات وفقًا لسياسات الخصوصية
+              الخاصة بها.
+            </p>
 
-          <h2>Notifications</h2>
-          <p>
-            If you enable notifications, the Application may use your
-            notification preferences and reminder settings to send devotional
-            reminders and other relevant app notifications.
-          </p>
+            <h2>الإشعارات</h2>
+            <p>
+              إذا قمت بتمكين الإشعارات، فقد يستخدم التطبيق تفضيلات الإشعارات
+              وإعدادات التذكير الخاصة بك لإرسال تذكيرات الوحدة اليومية والإشعارات
+              الأخرى ذات الصلة.
+            </p>
 
-          <h2>Data Retention</h2>
-          <p>
-            The Service Provider retains user-provided account and app data for
-            as long as needed to provide the Application and for a reasonable
-            period afterward, unless a longer retention period is required by
-            law or needed for legitimate operational purposes.
-          </p>
-          <p>
-            Analytics, diagnostics, and session replay data may be retained by
-            third-party providers according to their own retention policies.
-          </p>
-          <p>
-            To request deletion of your account or personal data, contact:
-            fadykhayrat@gmail.com
-          </p>
+            <h2>الاحتفاظ بالبيانات</h2>
+            <p>
+              يحتفظ مقدّم الخدمة ببيانات الحساب وبيانات التطبيق التي يقدمها
+              المستخدم طوال الفترة اللازمة لتقديم التطبيق ولمدة معقولة بعدها، ما
+              لم يكن هناك اشتراط قانوني أو غرض تشغيلي مشروع يستوجب مدة أطول.
+            </p>
+            <p>
+              قد يتم الاحتفاظ ببيانات التحليلات والتشخيص وإعادة الجلسات لدى مزودي
+              الخدمات الخارجيين وفقًا لسياسات الاحتفاظ الخاصة بهم.
+            </p>
+            <p>
+              لطلب حذف حسابك أو بياناتك الشخصية، تواصل معنا على:
+              fadykhayrat@gmail.com
+            </p>
 
-          <h2>Data Security</h2>
-          <p>
-            The Service Provider uses reasonable administrative, technical, and
-            organizational safeguards to protect information processed through
-            the Application. Data transmitted through third-party services is
-            expected to be encrypted in transit where supported by those
-            providers.
-          </p>
+            <h2>أمن البيانات</h2>
+            <p>
+              يستخدم مقدّم الخدمة ضوابط تنظيمية وتقنية وإدارية معقولة لحماية
+              المعلومات المعالجة من خلال التطبيق. ويُتوقع أن تكون البيانات المنقولة
+              عبر خدمات الطرف الثالث مشفّرة أثناء النقل حيثما تدعم تلك الجهات ذلك.
+            </p>
 
-          <h2>Children&apos;s Privacy</h2>
-          <p>
-            The Application is not intended for children under 13, and the
-            Service Provider does not knowingly collect personal information
-            from children under 13. If you believe a child under 13 has
-            provided personal information, contact fadykhayrat@gmail.com so
-            appropriate action can be taken.
-          </p>
+            <h2>خصوصية الأطفال</h2>
+            <p>
+              التطبيق غير موجّه للأطفال دون سن ١٣ عامًا، ولا يجمع مقدّم الخدمة
+              عمدًا أي معلومات شخصية من الأطفال دون سن ١٣ عامًا. إذا كنت تعتقد أن
+              طفلًا دون ١٣ عامًا قدم معلومات شخصية، تواصل معنا على
+              fadykhayrat@gmail.com لاتخاذ الإجراء المناسب.
+            </p>
 
-          <h2>Your Choices</h2>
-          <p>
-            You may choose whether to enable notifications in your device
-            settings and within the Application where applicable. You may also
-            stop all collection of information by uninstalling the Application.
-          </p>
+            <h2>خياراتك</h2>
+            <p>
+              يمكنك اختيار تمكين الإشعارات أو تعطيلها من إعدادات جهازك وداخل
+              التطبيق حيثما كان ذلك متاحًا. كما يمكنك إيقاف جمع المعلومات تمامًا
+              عن طريق إلغاء تثبيت التطبيق.
+            </p>
 
-          <h2>Changes to This Privacy Policy</h2>
-          <p>
-            This Privacy Policy may be updated from time to time. The Service
-            Provider will update the effective date above when changes are made.
-            Continued use of the Application after changes become effective
-            means you accept the updated Privacy Policy.
-          </p>
+            <h2>التغييرات على سياسة الخصوصية</h2>
+            <p>
+              قد يتم تحديث سياسة الخصوصية هذه من وقت لآخر. سيقوم مقدّم الخدمة
+              بتحديث تاريخ السريان أعلاه عند إجراء التغييرات. ويعني استمرارك في
+              استخدام التطبيق بعد سريان التغييرات موافقتك على سياسة الخصوصية
+              المحدّثة.
+            </p>
 
-          <h2>Contact</h2>
-          <p>
-            If you have questions about this Privacy Policy or data practices
-            related to the Application, contact:
-          </p>
-          <p>fadykhayrat@gmail.com</p>
-        </article>
+            <h2>التواصل</h2>
+            <p>إذا كانت لديك أسئلة حول سياسة الخصوصية هذه أو ممارسات البيانات:</p>
+            <p>fadykhayrat@gmail.com</p>
+          </article>
         </div>
       </main>
     </>

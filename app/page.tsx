@@ -1,168 +1,512 @@
-import Image from "next/image"
-import Link from "next/link"
-import logo from "@/public/logo.png"
+import Image from "next/image";
+import Link from "next/link";
+import logo from "@/public/logo.png";
+import googlePlayBadge from "@/public/google-play-badge.svg";
+import appStoreBadge from "@/public/app-store-badge.svg";
+import Reveal from "./components/Reveal";
+import Faq, { FAQ_ITEMS } from "./components/Faq";
+import { SITE_URL } from "./lib/site";
 
-export default function Home() {
+const GOOGLE_PLAY_URL =
+  "https://play.google.com/store/apps/details?id=com.honara7ty.app";
+const APP_STORE_URL = "https://apps.apple.com/eg/app/id6799511461";
+
+function Icon({ d, size = 26 }: { d: string; size?: number }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d={d} />
+    </svg>
+  );
+}
+
+const ICON_USER =
+  "M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM4.5 20.5c.6-3.5 3.7-5.5 7.5-5.5s6.9 2 7.5 5.5";
+const ICON_BELL = "M18 16v-5a6 6 0 1 0-12 0v5l-1.7 3h15.4L18 16ZM9.8 22h4.4";
+const ICON_BOOK =
+  "M12 6.5C10 5 7.2 4.3 4 4.3v14.4c3.2 0 6 .7 8 2.2 2-1.5 4.8-2.2 8-2.2V4.3c-3.2 0-6 .7-8 2.2v14.4";
+const ICON_PEN = "M12 20.5h9M16.8 3.2l4 4L7.5 20.5h-4v-4L16.8 3.2Z";
+const ICON_SHIELD =
+  "M12 3l8 2.8v5.9c0 4.8-3.4 7.8-8 9.3-4.6-1.5-8-4.5-8-9.3V5.8L12 3Z";
+const ICON_DOWNLOAD = "M12 3v11m-5-4.5L12 14l5-4.5M4.5 20.5h15";
+const ICON_FLAME =
+  "M12 22c4 0 7-2.7 7-6.6 0-2.6-1.4-4.7-3-6.3-.3 1.3-1 2.4-2 3.1-.1-2.8-1.6-5.5-4-7.1-.2 2.4-1.3 4.1-2.7 5.6C6 12.2 5 13.9 5 15.7 5 19.4 8 22 12 22Z";
+const ICON_CHECK = "M4.5 12.5l4.5 4.5L19.5 6.5";
+
+function StoreLinks() {
+  return (
+    <div className="store-links">
+      <a href={GOOGLE_PLAY_URL} target="_blank" rel="noopener noreferrer">
+        <Image
+          src={googlePlayBadge}
+          alt="حمّل هنا راحتى من Google Play"
+          width={162}
+          height={48}
+        />
+      </a>
+      <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+        <Image
+          src={appStoreBadge}
+          alt="حمّل هنا راحتى من App Store"
+          width={162}
+          height={48}
+        />
+      </a>
+    </div>
+  );
+}
+
+function PhoneMockup() {
+  return (
+    <div className="phone-wrap anim-up d5">
+      <span className="chip chip-1">
+        <Icon d={ICON_BELL} size={16} />
+        تذكير ٦:٠٠ صباحًا
+      </span>
+      <span className="chip chip-2">
+        <Icon d={ICON_FLAME} size={16} />
+        ٧ أيام متتابعة
+      </span>
+      <div className="phone">
+        <span className="phone-notch" />
+        <div className="screen">
+          <div className="scr-status">
+            <span>٦:٠٠</span>
+            <span className="scr-dots">
+              <i />
+              <i />
+              <i />
+            </span>
+          </div>
+          <p className="scr-hi">صباح الخير</p>
+          <p className="scr-sub">ابدأ يومك مع الله</p>
+          <div className="scr-card scr-gold">
+            <small>آية اليوم</small>
+            <strong>«الرَّبُّ رَاعِيَّ فَلَا يُعْوِدُنِي شَيْءٌ»</strong>
+            <span>مزمور ٢٣: ١</span>
+          </div>
+          <div className="scr-card">
+            <span className="scr-row">
+              <Icon d={ICON_BELL} size={14} />
+              وحدتك اليومية
+            </span>
+            <strong>٦:٠٠ صباحًا — كل يوم</strong>
+            <span className="scr-on">التذكير مفعّل</span>
+          </div>
+          <div className="scr-progress">
+            <span />
+          </div>
+          <p className="scr-plan">خطة القراءة: إنجيل يوحنا — اليوم ١٢ من ٢١</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ShotScreenVerse() {
   return (
     <>
+      <p className="shot-hi">آية اليوم</p>
+      <div className="scr-card scr-gold">
+        <small>الخيرية</small>
+        <strong>«أَجْعَلْنِي فِي الصَّبَاحِ أَسْمَعُ رَحْمَتَكَ»</strong>
+        <span>مزمور ١٤٣: ٨</span>
+      </div>
+      <div className="bar" style={{ width: "88%" }} />
+      <div className="bar" style={{ width: "70%" }} />
+      <div className="scr-progress">
+        <span />
+      </div>
+      <p className="scr-plan">اكتملت ٤ من ٧ أيام هذا الأسبوع</p>
+    </>
+  );
+}
+
+function ShotScreenPlan() {
+  return (
+    <>
+      <p className="shot-hi">خطة القراءة</p>
+      {[
+        ["إنجيل يوحنا ١", true],
+        ["إنجيل يوحنا ٢", true],
+        ["مزمور ٢٣", true],
+        ["إنجيل يوحنا ٣", false],
+        ["رسالة فيلبي ١", false],
+      ].map(([label, done]) => (
+        <div key={label as string} className="plan-row">
+          <span className={`check ${done ? "check-on" : ""}`}>
+            {done ? <Icon d={ICON_CHECK} size={11} /> : null}
+          </span>
+          <span>{label as string}</span>
+        </div>
+      ))}
+      <div className="scr-progress">
+        <span />
+      </div>
+    </>
+  );
+}
+
+function ShotScreenNotes() {
+  return (
+    <>
+      <p className="shot-hi">
+        <Icon d={ICON_PEN} size={15} />
+        ملاحظات الصلاة
+      </p>
+      <div className="scr-card">
+        <span className="scr-row">شكرًا لأنك معي دائمًا</span>
+        <div className="bar" style={{ width: "92%" }} />
+        <div className="bar" style={{ width: "64%" }} />
+        <span className="scr-date">اليوم — ٦:١٥ ص</span>
+      </div>
+      <div className="scr-card">
+        <span className="scr-row">سلام يفوق كل فهم</span>
+        <div className="bar" style={{ width: "85%" }} />
+        <div className="bar" style={{ width: "52%" }} />
+        <span className="scr-date">أمس — ٩:٣٠ م</span>
+      </div>
+    </>
+  );
+}
+
+export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        name: "هنا راحتى - Honara7ty",
+        applicationCategory: "LifestyleApplication",
+        operatingSystem: "Android, iOS",
+        inLanguage: "ar",
+        url: SITE_URL,
+        offers: { "@type": "Offer", price: "0", priceCurrency: "EGP" },
+        author: { "@type": "Person", name: "Fady Khayrat" },
+        description:
+          "تطبيق مساعد على بناء عادة الوحدة اليومية: تذكيرات، خطط قراءة للكتاب المقدس، ملاحظات صلاة وتأملات روحية.",
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: FAQ_ITEMS.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      },
+    ],
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <header className="hero">
         <div className="wrap">
-          <div className="brand">
-            <Image
-              src={logo}
-              alt="Honara7ty logo"
-              width={64}
-              height={64}
-              priority
-            />
-            <strong>Honara7ty</strong>
-          </div>
-          <h1>Honara7ty is a mobile app for daily spiritual discipline.</h1>
-          <p className="lead">
-            Honara7ty helps users keep a consistent time with God through daily
-            reminder scheduling, Bible reading support, prayer notes, spiritual
-            reflections, and personal progress tracking.
-          </p>
-          <div className="actions">
-            <Link href="/privacy" className="btn btn-primary">
-              Privacy Policy
+          <nav className="topbar anim-up">
+            <div className="brand">
+              <Image
+                src={logo}
+                alt="شعار هنا راحتى Honara7ty"
+                width={44}
+                height={44}
+                priority
+              />
+              <span className="brand-text">
+                <strong>هنا راحتى</strong>
+                <span>Honara7ty</span>
+              </span>
+            </div>
+            <Link href="/privacy" className="topbar-link">
+              سياسة الخصوصية
             </Link>
-            <a
-              href="mailto:fadykhayrat@gmail.com"
-              className="btn btn-secondary"
-            >
-              Contact
-            </a>
+          </nav>
+
+          <div className="hero-grid">
+            <div className="hero-body">
+              <span className="eyebrow anim-up d1">
+                «هنا راحتى» — تطبيقك للوقت اليومي مع الله
+              </span>
+              <h1 className="anim-up d2">
+                ابنِ عادة الوحدة اليومية
+                <br />
+                <span className="gold-text">وابقَ قريبًا كل يوم</span>
+              </h1>
+              <p className="lead anim-up d3">
+                Honara7ty يساعدك على الاستمرار في وقتك اليومي مع الله من خلال
+                تذكيرات في الوقت الذي تختاره، ودعم لقراءة الكتاب المقدس، وملاحظات
+                صلاة، وتأملات روحية، ومتابعة لتقدمك الشخصي.
+              </p>
+              <div className="actions anim-up d4">
+                <Link href="#download" className="btn btn-primary">
+                  حمّل التطبيق مجانًا
+                </Link>
+                <a
+                  href="mailto:fadykhayrat@gmail.com"
+                  className="btn btn-outline"
+                >
+                  تواصل معنا
+                </a>
+              </div>
+              <div className="store-caption anim-up d5">متوفر على</div>
+              <div className="anim-up d6">
+                <StoreLinks />
+              </div>
+            </div>
+
+            <PhoneMockup />
           </div>
         </div>
       </header>
 
       <main>
         <div className="wrap">
-          <section className="grid">
-            <article className="card">
-              <h3>Account Access</h3>
-              <p>
-                Users can create an account with email or sign in with Google.
-              </p>
-            </article>
-            <article className="card">
-              <h3>Daily Reminder Scheduling</h3>
-              <p>
-                Users choose a preferred devotional time and receive reminders
-                if notifications are enabled.
-              </p>
-            </article>
-            <article className="card">
-              <h3>Bible Reading and Tracking</h3>
-              <p>
-                Reading plans, devotional activity, and scripture progress are
-                saved to the user account.
-              </p>
-            </article>
-            <article className="card">
-              <h3>Private Notes and Reflections</h3>
-              <p>
-                Prayer notes and spiritual reflections are stored privately for
-                the signed-in user.
-              </p>
-            </article>
+          <section className="grid features">
+            <Reveal>
+              <article className="card feature-card">
+                <span className="feature-icon gold-bg">
+                  <Icon d={ICON_USER} />
+                </span>
+                <h3>حسابك بسهولة</h3>
+                <p>
+                  أنشئ حسابك بالبريد الإلكتروني أو سجّل الدخول بحساب Google في
+                  ثوانٍ.
+                </p>
+              </article>
+            </Reveal>
+            <Reveal delay={90}>
+              <article className="card feature-card">
+                <span className="feature-icon navy-bg">
+                  <Icon d={ICON_BELL} />
+                </span>
+                <h3>تذكيرات يومية</h3>
+                <p>
+                  اختر وقت وحدتك اليومية واستقبل تذكيرًا لطيفًا في وقته إذا كانت
+                  الإشعارات مُفعّلة.
+                </p>
+              </article>
+            </Reveal>
+            <Reveal delay={180}>
+              <article className="card feature-card">
+                <span className="feature-icon gold-bg">
+                  <Icon d={ICON_BOOK} />
+                </span>
+                <h3>قراءة وتتبّع التقدم</h3>
+                <p>
+                  خطط قراءة ونشاطك الروحي وتقدمك في الكلمة محفوظة دائمًا في
+                  حسابك.
+                </p>
+              </article>
+            </Reveal>
+            <Reveal delay={270}>
+              <article className="card feature-card">
+                <span className="feature-icon navy-bg">
+                  <Icon d={ICON_PEN} />
+                </span>
+                <h3>ملاحظات خاصة بك</h3>
+                <p>
+                  ملاحظات الصلاة والتأملات الروحية محفوظة بخصوصية تامة لحسابك فقط.
+                </p>
+              </article>
+            </Reveal>
           </section>
 
-          <section className="section card">
-            <h2>About the Application</h2>
-            <p>
-              Honara7ty is a mobile application that supports a daily spiritual
-              routine. The app is designed to help users stay consistent in their
-              quiet time through scheduled reminders, Bible reading support,
-              personal prayer notes, spiritual reflections, and progress
-              tracking.
-            </p>
-            <p>
-              This website is publicly accessible and does not require login. It
-              exists to explain what the application does, what user data it
-              processes, and where users can review the privacy policy.
-            </p>
-          </section>
-
-          <section className="section split">
-            <article className="card">
-              <h2>What the App Does</h2>
-              <ul>
-                <li>Lets users sign in with email or Google</li>
-                <li>Allows users to set a daily devotional reminder time</li>
-                <li>Tracks reading activity and devotional progress</li>
-                <li>Saves prayer notes and spiritual reflections</li>
-                <li>
-                  Supports profile setup and account-based personalization
-                </li>
-              </ul>
-            </article>
-
-            <article className="card">
-              <h2>Why User Data Is Requested</h2>
-              <ul>
-                <li>
-                  Email address and account identity are used to create and
-                  secure the account
-                </li>
-                <li>
-                  Google account data is used only for Google Sign-In
-                  authentication
-                </li>
-                <li>Profile details help personalize the in-app experience</li>
-                <li>
-                  Reminder time is used to schedule devotional notifications
-                  chosen by the user
-                </li>
-                <li>
-                  Prayer notes, reflections, and reading progress are stored so
-                  users can access their own spiritual history
-                </li>
-              </ul>
-            </article>
-          </section>
-
-          <section className="section card">
-            <h2>Privacy and Transparency</h2>
-            <p>
-              Honara7ty requests only the data needed to provide account access,
-              reminder scheduling, saved devotional content, and app
-              functionality. More detail is available in the privacy policy.
-            </p>
-            <p>
-              Privacy Policy:{" "}
-              <Link href="/privacy">
-                Open the Honara7ty Privacy Policy
-              </Link>
-            </p>
-          </section>
-
-          <section className="section card">
-            <h2>Application Identity</h2>
-            <div className="meta">
-              <p>
-                <strong>App name:</strong> Honara7ty
-              </p>
-              <p>
-                <strong>Platform:</strong> Mobile application
-              </p>
-              <p>
-                <strong>Developer contact:</strong> fadykhayrat@gmail.com
-              </p>
+          <section className="verse-band full-width">
+            <div className="wrap">
+              <div className="quote-mark" aria-hidden="true">
+                &rdquo;
+              </div>
+              <blockquote>
+                أَجْعَلْنِي فِي الصَّبَاحِ أَسْمَعُ رَحْمَتَكَ، لِأَنِّي عَلَيْكَ
+                تَوَكَّلْتُ
+              </blockquote>
+              <cite>مزمور ١٤٣: ٨</cite>
             </div>
           </section>
+
+          <Reveal>
+            <section className="section card">
+              <h2>ابدأ في ثلاث خطوات</h2>
+              <ol className="steps">
+                <li>
+                  <span className="step-num">١</span>
+                  <div>
+                    <strong>حمّل التطبيق</strong>
+                    <p>متوفر لأجهزة Android و iOS من المتاجر أدناه.</p>
+                  </div>
+                </li>
+                <li>
+                  <span className="step-num">٢</span>
+                  <div>
+                    <strong>أنشئ حسابك وحدّد وقتك</strong>
+                    <p>اختيار وقت يومي لوحدتك ليصلك التذكير عند موعده.</p>
+                  </div>
+                </li>
+                <li>
+                  <span className="step-num">٣</span>
+                  <div>
+                    <strong>ثبّت عادتك اليومية</strong>
+                    <p>اقرأ، سجّل تأملاتك، وتابع تقدمك يزيد يوم عن يوم.</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </Reveal>
+
+          <section className="section">
+            <Reveal>
+              <div className="shots-head">
+                <h2>لمحة من داخل التطبيق</h2>
+                <p>واجهة بسيطة وهادئة تساعدك على التركيز في وقتك مع الله.</p>
+              </div>
+            </Reveal>
+            <div className="shots">
+              <Reveal>
+                <figure className="shot">
+                  <div className="shot-frame">
+                    <div className="shot-screen">
+                      <ShotScreenVerse />
+                    </div>
+                  </div>
+                  <figcaption>آية وتأمل كل يوم</figcaption>
+                </figure>
+              </Reveal>
+              <Reveal delay={120}>
+                <figure className="shot">
+                  <div className="shot-frame">
+                    <div className="shot-screen">
+                      <ShotScreenPlan />
+                    </div>
+                  </div>
+                  <figcaption>خطط قراءة متتابعة</figcaption>
+                </figure>
+              </Reveal>
+              <Reveal delay={240}>
+                <figure className="shot">
+                  <div className="shot-frame">
+                    <div className="shot-screen">
+                      <ShotScreenNotes />
+                    </div>
+                  </div>
+                  <figcaption>ملاحظات صلاة خاصة</figcaption>
+                </figure>
+              </Reveal>
+            </div>
+          </section>
+
+          <div className="split">
+            <Reveal>
+              <section className="card h-full">
+                <h2>ماذا يقدّم لك التطبيق؟</h2>
+                <ul>
+                  <li>تسجيل الدخول بالبريد الإلكتروني أو بحساب Google</li>
+                  <li>تحديد وقت يومي للوحدة واستقبال التذكيرات في موعدها</li>
+                  <li>تتبّع نشاط القراءة والتقدم الروحي</li>
+                  <li>حفظ ملاحظات الصلاة والتأملات الروحية</li>
+                  <li>إعداد الملف الشخصي وتخصيص التجربة داخل التطبيق</li>
+                </ul>
+              </section>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <section className="card h-full">
+                <h2>لماذا نطلب هذه البيانات؟</h2>
+                <ul>
+                  <li>البريد الإلكتروني وهوية الحساب لإنشاء الحساب وتأمينه</li>
+                  <li>
+                    بيانات حساب Google تُستخدم فقط لتسجيل الدخول عبر Google
+                  </li>
+                  <li>تفاصيل الملف الشخصي تساعد على تخصيص تجربتك داخل التطبيق</li>
+                  <li>
+                    وقت التذكير يُستخدم لجدولة الإشعارات التي اخترتها بنفسك
+                  </li>
+                  <li>
+                    ملاحظات الصلاة والتأملات وتقدم القراءة محفوظة ليك أنت وحده
+                  </li>
+                </ul>
+              </section>
+            </Reveal>
+          </div>
+
+          <Reveal>
+            <section className="section privacy-strip">
+              <span className="feature-icon">
+                <Icon d={ICON_SHIELD} />
+              </span>
+              <div>
+                <h2>الخصوصية والشفافية</h2>
+                <p>
+                  يطلب Honara7ty فقط البيانات اللازمة لتوفير الوصول إلى الحساب،
+                  وجدولة التذكيرات، وحفظ المحتوى الروحي، وتشغيل خدمات التطبيق.
+                </p>
+                <Link href="/privacy" className="text-link">
+                  اقرأ سياسة الخصوصية كاملة ←
+                </Link>
+              </div>
+            </section>
+          </Reveal>
+
+          <Reveal>
+            <section className="section card faq-card">
+              <h2>أسئلة شائعة</h2>
+              <Faq />
+            </section>
+          </Reveal>
+
+          <Reveal>
+            <section className="section card meta-card">
+              <h2>بيانات التطبيق</h2>
+              <div className="meta">
+                <p>
+                  <strong>اسم التطبيق:</strong> هنا راحتى — Honara7ty
+                </p>
+                <p>
+                  <strong>المنصة:</strong> تطبيق موبايل (Android و iOS)
+                </p>
+                <p>
+                  <strong>المطوّر / للتواصل:</strong> fadykhayrat@gmail.com
+                </p>
+              </div>
+            </section>
+          </Reveal>
+
+          <Reveal>
+            <section id="download" className="section download-card">
+              <Icon d={ICON_DOWNLOAD} size={34} />
+              <h2>حمّل «هنا راحتى» الآن</h2>
+              <p>
+                ابدأ اليوم في بناء عادتك الروحية اليومية… خطوة صغيرة كل يوم تصنع
+                فرقًا كبيرًا.
+              </p>
+              <StoreLinks />
+            </section>
+          </Reveal>
         </div>
       </main>
 
       <footer>
-        <div className="wrap">
-          <div className="footer-card">
-            <h3>Contact</h3>
-            <p>Email: fadykhayrat@gmail.com</p>
-          </div>
+        <div className="wrap footer-inner">
+          <p>© {new Date().getFullYear()} Honara7ty — جميع الحقوق محفوظة</p>
+          <p>
+            للتواصل:{" "}
+            <a href="mailto:fadykhayrat@gmail.com" className="text-link">
+              fadykhayrat@gmail.com
+            </a>
+          </p>
         </div>
       </footer>
     </>
-  )
+  );
 }

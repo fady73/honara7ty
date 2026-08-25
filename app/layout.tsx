@@ -1,10 +1,58 @@
-import { Metadata } from "next";
+import { Cairo } from "next/font/google";
+import { Metadata, Viewport } from "next";
+import { SITE_URL } from "./lib/site";
+import Analytics from "./components/Analytics";
 import "./globals.css";
 
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-cairo",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#0a1124",
+};
+
 export const metadata: Metadata = {
-  title: "Honara7ty",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "هنا راحتى Honara7ty | وقتك اليومي مع الله",
+    template: "%s | هنا راحتى Honara7ty",
+  },
   description:
-    "Honara7ty helps users build a daily devotional habit with reading plans, reminders, prayer notes, and spiritual reflections.",
+    "تطبيق Honara7ty يساعدك على بناء عادة الوحدة اليومية من خلال تذكيرات يومية، وخطط قراءة للكتاب المقدس، وملاحظات صلاة، وتأملات روحية، ومتابعة تقدمك الشخصي.",
+  keywords: [
+    "Honara7ty",
+    "الوحدة اليومية",
+    "وقت الرب",
+    "قراءة الكتاب المقدس",
+    "تطبيق مسيحي",
+    "ملاحظات صلاة",
+    "تأملات روحية",
+    "devotional app",
+  ],
+  applicationName: "Honara7ty",
+  authors: [{ name: "Fady Khayrat" }],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ar_EG",
+    url: SITE_URL,
+    siteName: "Honara7ty",
+    title: "Honara7ty | وقتك اليومي مع الله",
+    description:
+      "ابنِ عادة الوحدة اليومية: تذكيرات يومية، خطط قراءة للكتاب المقدس، ملاحظات صلاة وتأملات روحية في مكان واحد.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Honara7ty | وقتك اليومي مع الله",
+    description:
+      "ابنِ عادة الوحدة اليومية: تذكيرات، خطط قراءة، وملاحظات صلاة في تطبيق واحد.",
+  },
 };
 
 export default function RootLayout({
@@ -13,8 +61,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="ar" dir="rtl">
+      <body className={cairo.variable}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
