@@ -3,6 +3,8 @@
 import { useEffect } from 'react';
 import Image from 'next/image';
 import logo from '@/public/logo.png';
+import googlePlayBadge from '@/public/google-play-badge.svg';
+import appStoreBadge from '@/public/app-store-badge.svg';
 
 const PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.honara7ty.app';
@@ -49,10 +51,20 @@ export default function DevotionGroupInviteClient({ code }: { code: string }) {
 
         <div className="invite-stores">
           <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-            Google Play
+            <Image
+              src={googlePlayBadge}
+              alt="حمّل هنا راحتى من Google Play"
+              width={162}
+              height={48}
+            />
           </a>
           <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-            App Store
+            <Image
+              src={appStoreBadge}
+              alt="حمّل هنا راحتى من App Store"
+              width={162}
+              height={48}
+            />
           </a>
         </div>
 

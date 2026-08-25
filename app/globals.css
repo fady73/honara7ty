@@ -54,7 +54,7 @@ a:focus-visible,
 }
 
 .wrap {
-  width: min(1020px, calc(100% - 32px));
+  width: calc(100% - 202px);
   margin: 0 auto;
 }
 
@@ -861,6 +861,14 @@ footer .text-link {
   line-height: 1.8;
 }
 
+.verse-band blockquote span {
+  display: block;
+}
+
+.verse-band blockquote span + span {
+  margin-top: 12px;
+}
+
 .verse-band cite {
   color: var(--gold-bright);
   font-style: normal;
@@ -944,7 +952,9 @@ footer .text-link {
   height: auto;
   clip-path: inset(2.8% 0.4% 2.8% 0.4% round 11% / 5.2%);
   filter: drop-shadow(0 20px 20px rgba(10, 17, 36, 0.2));
-  transition: transform 0.25s ease, filter 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
 }
 
 .shot:hover .shot-image {
@@ -1012,7 +1022,7 @@ footer .text-link {
 /* ---------- FAQ ---------- */
 
 .faq-card {
-  max-width: 780px;
+  max-width: 100%;
   margin-inline: auto;
 }
 
@@ -1059,7 +1069,9 @@ footer .text-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.25s ease, background 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
 }
 
 .faq-item[open] summary::after {
@@ -1137,7 +1149,10 @@ footer .text-link {
   color: #fff;
   background: rgba(255, 255, 255, 0.08);
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .theme-toggle:hover {
@@ -1158,8 +1173,16 @@ footer .text-link {
 
 [data-theme="dark"] body {
   background:
-    radial-gradient(900px 500px at 100% 0%, rgba(201, 168, 76, 0.06), transparent 60%),
-    radial-gradient(900px 600px at 0% 40%, rgba(70, 100, 180, 0.08), transparent 60%),
+    radial-gradient(
+      900px 500px at 100% 0%,
+      rgba(201, 168, 76, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 600px at 0% 40%,
+      rgba(70, 100, 180, 0.08),
+      transparent 60%
+    ),
     var(--mist);
 }
 
@@ -1213,15 +1236,29 @@ footer .text-link {
   justify-content: center;
   padding: 24px;
   background:
-    radial-gradient(600px 400px at 85% 5%, rgba(201, 168, 76, 0.2), transparent 60%),
-    radial-gradient(700px 500px at 10% 95%, rgba(70, 100, 180, 0.28), transparent 60%),
-    linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 60%, var(--navy-3) 130%);
+    radial-gradient(
+      600px 400px at 85% 5%,
+      rgba(201, 168, 76, 0.2),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 500px at 10% 95%,
+      rgba(70, 100, 180, 0.28),
+      transparent 60%
+    ),
+    linear-gradient(
+      160deg,
+      var(--navy) 0%,
+      var(--navy-2) 60%,
+      var(--navy-3) 130%
+    );
 }
 
 .invite-card {
   width: 100%;
   max-width: 430px;
   background: #fff;
+  color: #1a2233;
   border-radius: 24px;
   padding: 30px 26px 26px;
   text-align: center;
@@ -1243,10 +1280,11 @@ footer .text-link {
 .invite-card h1 {
   font-size: 23px;
   margin-bottom: 8px;
+  color: var(--navy);
 }
 
 .invite-sub {
-  color: var(--soft);
+  color: #5c6880;
   font-size: 15px;
   line-height: 1.8;
   max-width: 330px;
@@ -1294,18 +1332,20 @@ footer .text-link {
 
 .invite-stores a {
   flex: 1;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 11px;
-  font-weight: 700;
-  font-size: 13.5px;
-  color: var(--navy);
-  text-decoration: none;
-  transition: background 0.15s ease;
+  display: block;
+  min-width: 0;
+  transition: transform 0.15s ease;
 }
 
 .invite-stores a:hover {
-  background: var(--mist);
+  transform: translateY(-2px);
+}
+
+.invite-stores img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 9px;
 }
 
 .invite-hint {
@@ -1327,9 +1367,22 @@ footer .text-link {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(600px 420px at 85% 10%, rgba(201, 168, 76, 0.2), transparent 60%),
-    radial-gradient(700px 520px at 10% 90%, rgba(70, 100, 180, 0.3), transparent 60%),
-    linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 60%, var(--navy-3) 130%);
+    radial-gradient(
+      600px 420px at 85% 10%,
+      rgba(201, 168, 76, 0.2),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 520px at 10% 90%,
+      rgba(70, 100, 180, 0.3),
+      transparent 60%
+    ),
+    linear-gradient(
+      160deg,
+      var(--navy) 0%,
+      var(--navy-2) 60%,
+      var(--navy-3) 130%
+    );
   color: #fff;
 }
 

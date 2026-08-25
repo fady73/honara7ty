@@ -22,21 +22,45 @@ export const metadata: Metadata = {
     template: "%s | هنا راحتى Honara7ty",
   },
   description:
-    "تطبيق Honara7ty يساعدك على بناء عادة الوحدة اليومية من خلال تذكيرات يومية، وخطط قراءة للكتاب المقدس، وملاحظات صلاة، وتأملات روحية، ومتابعة تقدمك الشخصي.",
+    "تطبيق هنا راحتى يساعدك على حفظ آيات ومقاطع من الكتاب المقدس، والالتزام بالخلوة الروحية اليومية، ومتابعة تقدمك بالنجوم والشارات.",
   keywords: [
     "Honara7ty",
     "الوحدة اليومية",
     "وقت الرب",
     "قراءة الكتاب المقدس",
+    "حفظ الكتاب المقدس",
     "تطبيق مسيحي",
-    "ملاحظات صلاة",
-    "تأملات روحية",
+    "الخلوة الروحية",
+    "حفظ الآيات",
     "devotional app",
   ],
   applicationName: "Honara7ty",
   authors: [{ name: "Fady Khayrat" }],
+  creator: "Fady Khayrat",
+  publisher: "Honara7ty",
+  category: "Religion & Spirituality",
   alternates: {
     canonical: "/",
+    languages: {
+      "ar-EG": "/",
+      "x-default": "/",
+    },
+  },
+  manifest: "/manifest.webmanifest",
+  itunes: {
+    appId: "6799511461",
+    appArgument: SITE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
   openGraph: {
     type: "website",
@@ -45,13 +69,22 @@ export const metadata: Metadata = {
     siteName: "Honara7ty",
     title: "Honara7ty | وقتك اليومي مع الله",
     description:
-      "ابنِ عادة الوحدة اليومية: تذكيرات يومية، خطط قراءة للكتاب المقدس، ملاحظات صلاة وتأملات روحية في مكان واحد.",
+      "احفظ آيات الكتاب المقدس، التزم بخلوّتك اليومية، وتابع تقدمك بطريقة بسيطة ومُشجعة.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "هنا راحتى — احفظ كلمة الله وثبّت عادة خلوة كل يوم",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Honara7ty | وقتك اليومي مع الله",
     description:
-      "ابنِ عادة الوحدة اليومية: تذكيرات، خطط قراءة، وملاحظات صلاة في تطبيق واحد.",
+      "احفظ آيات الكتاب المقدس، التزم بخلوّتك اليومية، وتابع تقدمك بالنجوم والشارات.",
+    images: ["/opengraph-image"],
   },
 };
 
@@ -61,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <body className={cairo.variable}>
         <script
           dangerouslySetInnerHTML={{

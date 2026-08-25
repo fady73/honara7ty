@@ -1,8 +1,18 @@
 import Link from "next/link"
+import type { Metadata } from "next"
 
-export const metadata = {
-  title: "Honara7ty - سياسة الخصوصية",
+export const metadata: Metadata = {
+  title: "سياسة الخصوصية",
   description: "سياسة الخصوصية الخاصة بتطبيق Honara7ty للجوال.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    type: "website",
+    url: "/privacy",
+    title: "سياسة الخصوصية | هنا راحتى Honara7ty",
+    description: "تعرف على كيفية تعامل تطبيق هنا راحتى مع بيانات المستخدم وخصوصيته.",
+  },
 }
 
 export default function Privacy() {

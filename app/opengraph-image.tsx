@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og"
 
-export const alt = "Honara7ty — Build your daily devotional habit"
+export const alt = "Honara7ty — Memorize Scripture and build a daily spiritual habit"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -53,7 +53,7 @@ export default function OgImage() {
             marginTop: 18,
           }}
         >
-          Build your daily devotional habit
+          Memorize Scripture. Grow every day.
         </div>
 
         <div
