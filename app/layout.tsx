@@ -63,6 +63,12 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={cairo.variable}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme','dark')}}catch(e){}",
+          }}
+        />
         {children}
         <Analytics />
       </body>

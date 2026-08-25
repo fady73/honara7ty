@@ -9,6 +9,7 @@
   --ink: #1a2233;
   --soft: #5c6880;
   --card: #ffffff;
+  --heading: var(--navy);
   --line: rgba(10, 17, 36, 0.09);
   --radius: 16px;
 }
@@ -295,6 +296,16 @@ h1 {
   filter: blur(34px);
 }
 
+.hero-app-shot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  clip-path: inset(2.8% 0.4% 2.8% 0.4% round 11% / 5.2%);
+  filter: drop-shadow(0 30px 34px rgba(0, 0, 0, 0.42));
+}
+
 .phone {
   position: relative;
   border-radius: 44px;
@@ -561,7 +572,7 @@ main {
 .feature-card h3 {
   margin: 16px 0 8px;
   font-size: 18px;
-  color: var(--navy);
+  color: var(--heading);
 }
 
 .feature-card p {
@@ -595,7 +606,7 @@ main {
 h2 {
   margin: 0 0 14px;
   font-size: clamp(21px, 3vw, 26px);
-  color: var(--navy);
+  color: var(--heading);
   font-weight: 800;
 }
 
@@ -680,7 +691,7 @@ li::marker {
 }
 
 .steps strong {
-  color: var(--navy);
+  color: var(--heading);
   font-size: 17px;
   display: block;
   margin-bottom: 2px;
@@ -738,7 +749,7 @@ li::marker {
 }
 
 .meta strong {
-  color: var(--navy);
+  color: var(--heading);
 }
 
 .meta-card p strong::after {
@@ -889,10 +900,34 @@ footer .text-link {
 }
 
 .shots {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
+  display: flex;
+  gap: 24px;
   margin-top: 24px;
+  padding: 10px 6px 24px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) rgba(10, 17, 36, 0.08);
+}
+
+.shots::-webkit-scrollbar {
+  height: 8px;
+}
+
+.shots::-webkit-scrollbar-track {
+  background: rgba(10, 17, 36, 0.08);
+  border-radius: 999px;
+}
+
+.shots::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 999px;
+}
+
+.shots > .reveal {
+  flex: 0 0 min(260px, 72vw);
+  scroll-snap-align: center;
 }
 
 .shot {
@@ -903,30 +938,18 @@ footer .text-link {
   gap: 14px;
 }
 
-.shot-frame {
+.shot-image {
+  display: block;
   width: 100%;
-  max-width: 240px;
-  border-radius: 34px;
-  background: linear-gradient(180deg, #1c2749, #0b1230);
-  padding: 8px;
-  box-shadow:
-    0 26px 52px -20px rgba(10, 17, 36, 0.55),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.07);
-  transition: transform 0.25s ease;
+  height: auto;
+  clip-path: inset(2.8% 0.4% 2.8% 0.4% round 11% / 5.2%);
+  filter: drop-shadow(0 20px 20px rgba(10, 17, 36, 0.2));
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-.shot:hover .shot-frame {
+.shot:hover .shot-image {
   transform: translateY(-6px) rotate(-1deg);
-}
-
-.shot-screen {
-  background: linear-gradient(180deg, #f7f8fc, #edf0f8);
-  border-radius: 27px;
-  padding: 18px 13px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: 320px;
+  filter: drop-shadow(0 26px 24px rgba(10, 17, 36, 0.26));
 }
 
 .shot figcaption {
@@ -1011,7 +1034,7 @@ footer .text-link {
   padding: 16px 18px;
   font-weight: 700;
   font-size: 16px;
-  color: var(--navy);
+  color: var(--heading);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1078,7 +1101,7 @@ footer .text-link {
 }
 
 .privacy-main h1 {
-  color: var(--navy);
+  color: var(--heading);
   font-size: clamp(27px, 4vw, 38px);
   margin: 0 0 10px;
 }
@@ -1094,6 +1117,51 @@ footer .text-link {
 /* ---------- Download CTA ---------- */
 
 /* ---------- Responsive ---------- */
+
+/* ---------- Topbar actions & theme toggle ---------- */
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ---------- Dark theme ---------- */
+
+[data-theme="dark"] {
+  --ink: #eef2f8;
+  --soft: #8b96ab;
+  --mist: #0b1324;
+  --card: #141e38;
+  --line: rgba(255, 255, 255, 0.14);
+  --heading: #eef2f8;
+}
+
+[data-theme="dark"] body {
+  background:
+    radial-gradient(900px 500px at 100% 0%, rgba(201, 168, 76, 0.06), transparent 60%),
+    radial-gradient(900px 600px at 0% 40%, rgba(70, 100, 180, 0.08), transparent 60%),
+    var(--mist);
+}
 
 @media (max-width: 880px) {
   .hero-grid {

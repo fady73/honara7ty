@@ -8,13 +8,6 @@ const PLAY_STORE_URL =
   'https://play.google.com/store/apps/details?id=com.honara7ty.app';
 const APP_STORE_URL = 'https://apps.apple.com/eg/app/id6799511461';
 
-function isIosDevice(ua: string) {
-  return (
-    /iPad|iPhone|iPod/.test(ua) ||
-    (/Macintosh/.test(ua) && 'ontouchend' in document)
-  );
-}
-
 export default function DevotionGroupInviteClient({ code }: { code: string }) {
   const cleanCode = code.replace(/\s+/g, '');
   const appLink = `honara7ty://devotion-group-invite?code=${encodeURIComponent(cleanCode)}`;
@@ -22,33 +15,7 @@ export default function DevotionGroupInviteClient({ code }: { code: string }) {
   useEffect(() => {
     if (!cleanCode) return;
 
-    const ua = window.navigator.userAgent;
-    const isAndroid = /Android/i.test(ua);
-    const isIOS = isIosDevice(ua);
-    let didLeavePage = false;
-
-    const handleVisibilityChange = () => {
-      if (document.hidden) {
-        didLeavePage = true;
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
     window.location.href = appLink;
-
-    const fallbackTimer = window.setTimeout(() => {
-      if (!didLeavePage && isAndroid) {
-        window.location.href = PLAY_STORE_URL;
-      } else if (!didLeavePage && isIOS) {
-        window.location.href = APP_STORE_URL;
-      }
-    }, 1600);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.clearTimeout(fallbackTimer);
-    };
   }, [appLink, cleanCode]);
 
   return (
@@ -90,8 +57,8 @@ export default function DevotionGroupInviteClient({ code }: { code: string }) {
         </div>
 
         <p className="invite-hint">
-          لو التطبيق مش متسطّب على جهازك، هيتم تحويلك تلقائيًا للمتجر المناسب
-          (Google Play أو App Store) خلال لحظات.
+          لو التطبيق ما فتحش تلقائيًا، اضغط على زر «فتح التطبيق» للمحاولة مرة
+          تانية، أو اختَر المتجر المناسب لتحميله.
         </p>
       </section>
     </main>

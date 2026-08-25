@@ -3,13 +3,35 @@ import Link from "next/link";
 import logo from "@/public/logo.png";
 import googlePlayBadge from "@/public/google-play-badge.svg";
 import appStoreBadge from "@/public/app-store-badge.svg";
+import shot1 from "@/public/images/sm/1.png";
+import shot2 from "@/public/images/sm/2.png";
+import shot3 from "@/public/images/sm/3.png";
+import shot4 from "@/public/images/sm/4.png";
+import shot5 from "@/public/images/sm/5.png";
+import shot6 from "@/public/images/sm/6.png";
+import shot7 from "@/public/images/sm/7.png";
+import shot8 from "@/public/images/sm/8.png";
+import shot9 from "@/public/images/sm/9.png";
 import Reveal from "./components/Reveal";
 import Faq, { FAQ_ITEMS } from "./components/Faq";
+import ThemeToggle from "./components/ThemeToggle";
 import { SITE_URL } from "./lib/site";
 
 const GOOGLE_PLAY_URL =
   "https://play.google.com/store/apps/details?id=com.honara7ty.app";
 const APP_STORE_URL = "https://apps.apple.com/eg/app/id6799511461";
+
+const APP_SHOTS = [
+  { src: shot1, caption: "الرئيسية", alt: "الشاشة الرئيسية في تطبيق هنا راحتى" },
+  { src: shot2, caption: "قراءة الكتاب المقدس", alt: "شاشة قراءة الكتاب المقدس داخل تطبيق هنا راحتى" },
+  { src: shot3, caption: "خطة القراءة اليومية", alt: "إعداد وقت وخطة القراءة اليومية في تطبيق هنا راحتى" },
+  { src: shot4, caption: "حفظ الكتاب المقدس", alt: "اختيار جزء لحفظه من الكتاب المقدس" },
+  { src: shot5, caption: "مراجعة الحفظ", alt: "نتيجة اختبار حفظ الكتاب المقدس" },
+  { src: shot6, caption: "شرح الخلوة", alt: "محتوى شرح الخلوة والقراءة المنتظمة" },
+  { src: shot7, caption: "الإنجازات", alt: "شاشة الإنجازات والثبات الروحي" },
+  { src: shot8, caption: "متابعة الالتزام", alt: "تقويم متابعة الالتزام اليومي بالخلوة" },
+  { src: shot9, caption: "اختبارات الحفظ", alt: "اختبار تسميع وحفظ نص الكتاب المقدس" },
+] as const;
 
 function Icon({ d, size = 26 }: { d: string; size?: number }) {
   return (
@@ -76,106 +98,14 @@ function PhoneMockup() {
         <Icon d={ICON_FLAME} size={16} />
         ٧ أيام متتابعة
       </span>
-      <div className="phone">
-        <span className="phone-notch" />
-        <div className="screen">
-          <div className="scr-status">
-            <span>٦:٠٠</span>
-            <span className="scr-dots">
-              <i />
-              <i />
-              <i />
-            </span>
-          </div>
-          <p className="scr-hi">صباح الخير</p>
-          <p className="scr-sub">ابدأ يومك مع الله</p>
-          <div className="scr-card scr-gold">
-            <small>آية اليوم</small>
-            <strong>«الرَّبُّ رَاعِيَّ فَلَا يُعْوِدُنِي شَيْءٌ»</strong>
-            <span>مزمور ٢٣: ١</span>
-          </div>
-          <div className="scr-card">
-            <span className="scr-row">
-              <Icon d={ICON_BELL} size={14} />
-              وحدتك اليومية
-            </span>
-            <strong>٦:٠٠ صباحًا — كل يوم</strong>
-            <span className="scr-on">التذكير مفعّل</span>
-          </div>
-          <div className="scr-progress">
-            <span />
-          </div>
-          <p className="scr-plan">خطة القراءة: إنجيل يوحنا — اليوم ١٢ من ٢١</p>
-        </div>
-      </div>
+      <Image
+        className="hero-app-shot"
+        src={shot1}
+        alt="الشاشة الرئيسية لتطبيق هنا راحتى"
+        priority
+        sizes="(max-width: 760px) 78vw, 290px"
+      />
     </div>
-  );
-}
-
-function ShotScreenVerse() {
-  return (
-    <>
-      <p className="shot-hi">آية اليوم</p>
-      <div className="scr-card scr-gold">
-        <small>الخيرية</small>
-        <strong>«أَجْعَلْنِي فِي الصَّبَاحِ أَسْمَعُ رَحْمَتَكَ»</strong>
-        <span>مزمور ١٤٣: ٨</span>
-      </div>
-      <div className="bar" style={{ width: "88%" }} />
-      <div className="bar" style={{ width: "70%" }} />
-      <div className="scr-progress">
-        <span />
-      </div>
-      <p className="scr-plan">اكتملت ٤ من ٧ أيام هذا الأسبوع</p>
-    </>
-  );
-}
-
-function ShotScreenPlan() {
-  return (
-    <>
-      <p className="shot-hi">خطة القراءة</p>
-      {[
-        ["إنجيل يوحنا ١", true],
-        ["إنجيل يوحنا ٢", true],
-        ["مزمور ٢٣", true],
-        ["إنجيل يوحنا ٣", false],
-        ["رسالة فيلبي ١", false],
-      ].map(([label, done]) => (
-        <div key={label as string} className="plan-row">
-          <span className={`check ${done ? "check-on" : ""}`}>
-            {done ? <Icon d={ICON_CHECK} size={11} /> : null}
-          </span>
-          <span>{label as string}</span>
-        </div>
-      ))}
-      <div className="scr-progress">
-        <span />
-      </div>
-    </>
-  );
-}
-
-function ShotScreenNotes() {
-  return (
-    <>
-      <p className="shot-hi">
-        <Icon d={ICON_PEN} size={15} />
-        ملاحظات الصلاة
-      </p>
-      <div className="scr-card">
-        <span className="scr-row">شكرًا لأنك معي دائمًا</span>
-        <div className="bar" style={{ width: "92%" }} />
-        <div className="bar" style={{ width: "64%" }} />
-        <span className="scr-date">اليوم — ٦:١٥ ص</span>
-      </div>
-      <div className="scr-card">
-        <span className="scr-row">سلام يفوق كل فهم</span>
-        <div className="bar" style={{ width: "85%" }} />
-        <div className="bar" style={{ width: "52%" }} />
-        <span className="scr-date">أمس — ٩:٣٠ م</span>
-      </div>
-    </>
   );
 }
 
@@ -229,9 +159,12 @@ export default function Home() {
                 <span>Honara7ty</span>
               </span>
             </div>
-            <Link href="/privacy" className="topbar-link">
-              سياسة الخصوصية
-            </Link>
+            <div className="topbar-actions">
+              <Link href="/privacy" className="topbar-link">
+                سياسة الخصوصية
+              </Link>
+              <ThemeToggle />
+            </div>
           </nav>
 
           <div className="hero-grid">
@@ -372,37 +305,20 @@ export default function Home() {
                 <p>واجهة بسيطة وهادئة تساعدك على التركيز في وقتك مع الله.</p>
               </div>
             </Reveal>
-            <div className="shots">
-              <Reveal>
-                <figure className="shot">
-                  <div className="shot-frame">
-                    <div className="shot-screen">
-                      <ShotScreenVerse />
-                    </div>
-                  </div>
-                  <figcaption>آية وتأمل كل يوم</figcaption>
-                </figure>
-              </Reveal>
-              <Reveal delay={120}>
-                <figure className="shot">
-                  <div className="shot-frame">
-                    <div className="shot-screen">
-                      <ShotScreenPlan />
-                    </div>
-                  </div>
-                  <figcaption>خطط قراءة متتابعة</figcaption>
-                </figure>
-              </Reveal>
-              <Reveal delay={240}>
-                <figure className="shot">
-                  <div className="shot-frame">
-                    <div className="shot-screen">
-                      <ShotScreenNotes />
-                    </div>
-                  </div>
-                  <figcaption>ملاحظات صلاة خاصة</figcaption>
-                </figure>
-              </Reveal>
+            <div className="shots" aria-label="صور من داخل تطبيق هنا راحتى">
+              {APP_SHOTS.map((shot, index) => (
+                <Reveal key={shot.caption} delay={(index % 3) * 90}>
+                  <figure className="shot">
+                    <Image
+                      className="shot-image"
+                      src={shot.src}
+                      alt={shot.alt}
+                      sizes="(max-width: 640px) 72vw, 260px"
+                    />
+                    <figcaption>{shot.caption}</figcaption>
+                  </figure>
+                </Reveal>
+              ))}
             </div>
           </section>
 
